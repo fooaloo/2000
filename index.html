@@ -3,65 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Gallery</title>
+    <title>Video Gallery & Movie Suggestion Box</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #141414;
+            color: #fff;
             margin: 0;
             padding: 0;
+            user-select: none;
         }
+
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
+            background-color: #212121;
+            color: #fff;
+            padding: 20px 0;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
+
+        header h1 {
+            font-size: 36px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         .video-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px;
         }
+
         .video-box {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #1d1d1d;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
         }
+
         .video-box video {
             width: 100%;
-            height: 200px;
-            border-bottom: 1px solid #ddd;
-            controlslist: nodownload;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid #333;
         }
+
         .video-box h3 {
-            margin: 10px;
+            padding: 15px;
+            font-size: 16px;
             text-align: center;
+            margin: 0;
+            background-color: #333;
+            color: #fff;
         }
+
         .legal-note {
-            background-color: #ddd;
+            background-color: #333;
+            color: #ccc;
             text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-            font-size: 0.9em;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
         }
-        body {
-            -webkit-user-select: none; 
-            -moz-user-select: none;    
-            -ms-user-select: none;      
-            user-select: none;         
+
+        /* Reset some basic styles for the suggestion box */
+        #suggestion-box {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 300px;
+            padding: 15px;
+            background-color: #40444b;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #suggestion-box h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #b9bbbe;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #b9bbbe;
+        }
+
+        #suggestion-box input {
+            background-color: #2f3136;
+            color: white;
+            border: 1px solid #484b51;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+            width: 93%;
+            transition: all 0.3s ease;
+        }
+
+        #suggestion-box input:focus {
+            outline: none;
+            border-color: #7289da;
+            box-shadow: 0 0 5px #7289da;
+        }
+
+        #suggestion-box button {
+            background-color: #7289da;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #suggestion-box button:hover {
+            background-color: #5c6eb5;
+        }
+
+        #suggestion-box button:active {
+            background-color: #4c5e8e;
+        }
+
+        /* Responsive design */
+        @media (max-width: 400px) {
+            #suggestion-box {
+                width: 90%;
+                left: 5%;
+            }
+        }
+
+        /* Disable right-click context menu */
+        body, .video-box video {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
     </style>
-    <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-    </script>
 </head>
 <body>
 
@@ -116,7 +203,7 @@
     <div class="video-box">
         <h3>Jeffrey Dahmer - Season 1, Episode 2</h3>
         <video controls controlslist="nodownload">
-            <source src="https://ia800203.us.archive.org/25/items/dahmer-2022-complete-s-01-720p-3/DAHMER.S01.720p.NF.WEBRip.DDP5.1.Atmos.x264-SMURF%5Brartv%5D/DAHMER.S01E02.Please.Dont.Go.720p.NF.WEB-DL.DDP5.1.Atmos.H.264-SMURF.mp4" type="video/mp4">
+            <source src="https://ia600203.us.archive.org/25/items/dahmer-2022-complete-s-01-720p-3/DAHMER.S01.720p.NF.WEBRip.DDP5.1.Atmos.x264-SMURF%5Brartv%5D/DAHMER.S01E02.Please.Dont.Go.720p.NF.WEB-DL.DDP5.1.Atmos.H.264-SMURF.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -124,7 +211,7 @@
     <div class="video-box">
         <h3>Jeffrey Dahmer - Season 1, Episode 3</h3>
         <video controls controlslist="nodownload">
-            <source src="https://ia800203.us.archive.org/25/items/dahmer-2022-complete-s-01-720p-3/DAHMER.S01.720p.NF.WEBRip.DDP5.1.Atmos.x264-SMURF%5Brartv%5D/DAHMER.S01E03.Doin.A.Dahmer.720p.NF.WEB-DL.DDP5.1.Atmos.H.264-SMURF.mp4">
+            <source src="https://ia600203.us.archive.org/25/items/dahmer-2022-complete-s-01-720p-3/DAHMER.S01.720p.NF.WEBRip.DDP5.1.Atmos.x264-SMURF%5Brartv%5D/DAHMER.S01E03.Doin.A.Dahmer.720p.NF.WEB-DL.DDP5.1.Atmos.H.264-SMURF.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -132,15 +219,67 @@
     <div class="video-box">
         <h3>Jeffrey Dahmer - Season 1, Episode 4</h3>
         <video controls controlslist="nodownload">
-            <source src="https://ia800203.us.archive.org/25/items/dahmer-2022-complete-s-01-720p-3/DAHMER.S01.720p.NF.WEBRip.DDP5.1.Atmos.x264-SMURF%5Brartv%5D/DAHMER.S01E04.The.Good.Boy.Box.720p.NF.WEB-DL.DDP5.1.Atmos.H.264-SMURF.mp4">
+            <source src="https://ia600203.us.archive.org/25/items/dahmer-2022-complete-s-01-720p-3/DAHMER.S01.720p.NF.WEBRip.DDP5.1.Atmos.x264-SMURF%5Brartv%5D/DAHMER.S01E04.The.Good.Boy.Box.720p.NF.WEB-DL.DDP5.1.Atmos.H.264-SMURF.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 </div>
 
+<!-- Movie Suggestion Box -->
+<div id="suggestion-box">
+    <h3>Suggest a Movie</h3>
+    <input type="text" id="movie-input" placeholder="Enter movie name..." />
+    <button onclick="sendMovieSuggestion()">Submit Suggestion</button>
+</div>
+
 <div class="legal-note">
     &copy; 2025 fooaloo. All rights reserved. Unauthorized distribution or reproduction of this content is strictly prohibited.
 </div>
+
+<script>
+    async function sendMovieSuggestion() {
+        const movie = document.getElementById('movie-input').value;
+        if (!movie) {
+            alert("Please enter a movie name.");
+            return;
+        }
+
+        const userAgent = navigator.userAgent;  // Get the user agent string as the device ID
+        const deviceId = `Device ID: ${userAgent}`;
+
+        const webhookUrl = 'https://discord.com/api/webhooks/1352430987472277625/hMjiucOnT-YmODxyy0whd6x_q8j_NqeQqFhOBYPSG2i_BtqPeK4Bi3B9IfDqHHCGLQZ5'; // Replace with your Discord webhook URL
+
+        const payload = {
+            content: `Movie suggestion: ${movie}\nDevice Info: ${deviceId}`,
+        };
+
+        try {
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                alert("Thank you for your suggestion!");
+            } else {
+                alert("Failed to submit suggestion. Please try again.");
+            }
+        } catch (error) {
+            alert("Error submitting suggestion. Please check your internet connection.");
+        }
+
+        // Clear the input field after submission
+        document.getElementById('movie-input').value = '';
+    }
+
+    // Disable right-click across the entire page
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
 
 </body>
 </html>
